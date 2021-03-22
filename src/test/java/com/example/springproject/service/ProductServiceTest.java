@@ -1,6 +1,6 @@
 package com.example.springproject.service;
 
-import com.example.springproject.entity.ProductEntity;
+import com.example.springproject.entity.Product;
 import com.example.springproject.repository.ProductRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +14,16 @@ public class ProductServiceTest {
 
     @Test
     void saveProduct(){
-        ProductEntity productEntity = new ProductEntity();
-        productEntity.setPrice(1000);
-        productEntity.setName("이것은");
-        productEntity.setCount(100);
+        Product product = new Product();
+        product.setPrice(1000);
+        product.setName("이것은");
+        product.setCount(100);
 
-        productRepository.save(productEntity);
+        productRepository.save(product);
+    }
+
+    @Test
+    void findProduct(){
+        productRepository.findAll();
     }
 }

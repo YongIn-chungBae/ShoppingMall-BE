@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Getter @Setter
 @AllArgsConstructor @NoArgsConstructor
 @Table(name = "order_")
-public class OrderEntity {
+public class Order {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_idx")
@@ -21,11 +21,14 @@ public class OrderEntity {
     @Column(name = "order_time")
     private LocalDate createdTime;
 
-    @ManyToOne
-    @JoinColumn(name = "product_idx")
-    private Long productIdx;
+    @Column(name = "order_state")
+    private int state;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_idx")
+    private Product productIdx;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_idx")
-    private Long userIdx;
+    private User userIdx;
 }

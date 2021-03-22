@@ -1,6 +1,6 @@
 package com.example.springproject.service;
 
-import com.example.springproject.entity.ProductEntity;
+import com.example.springproject.entity.Product;
 import com.example.springproject.repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +15,8 @@ public class ProductService {
     ProductRepository productRepository;
 
     @Transactional
-    public void registerProduct(ProductEntity productEntity) {
-        productRepository.save(productEntity);
+    public void registerProduct(Product product) {
+        productRepository.save(product);
     }
 
 
