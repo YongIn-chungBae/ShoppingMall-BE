@@ -10,6 +10,7 @@ class UserControllerTest {
 
     @Autowired
     UserController userController;
+
     @Test
     void signUp() {
         User user2 = new User();
@@ -23,7 +24,6 @@ class UserControllerTest {
         }catch (Exception e){
             System.out.println("asdf"+e);
         }
-
-
     }
+
 }
