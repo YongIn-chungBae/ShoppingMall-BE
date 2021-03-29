@@ -24,10 +24,11 @@ public class UserService {
     }
 
 
-//    @Transactional
-//    public UserDto signIn(){
-//        UserEntity userEntity
-//    }
+    @Transactional
+    public Boolean signIn(User user){
+        User signInUser = userRepository.findByIdAndPassword(user.getId(), user.getPassword());
+        return signInUser != null;
+    }
 
 //    @Transactional
 //    public Long signUp(UserDto userDto){
