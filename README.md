@@ -34,9 +34,3 @@
 - [ ] gitflow 적용해보기.
 
 
-<br>
-#### 개발 일지
-<br>
-- [0325](https://github.com/YongIn-chungBae/DevelopmentDiary/blob/main/DevelopmentDiary/0325.md)
-
-  
