@@ -9,12 +9,12 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Getter
-@Setter
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "shopping_cart")
 public class ShoppingCart {
+
     @Id
     @Column(name = "shopping_cart_idx") @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;

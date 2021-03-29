@@ -1,9 +1,11 @@
 package com.example.springproject.service;
 
+import com.example.springproject.entity.User;
 import com.example.springproject.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @AllArgsConstructor
 @Service
@@ -16,15 +18,17 @@ public class UserService {
     OrderService orderService;
 
 
-//    @Transactional
-//    public Long registerUser(UserDto userDto) {
-//        return userRepository.save(userDto.toEntity()).getIdx();
-//    }
+    @Transactional
+    public Long signUp(User user) {
+        return userRepository.save(user).getIdx();
+    }
 
-//    @Transactional
-//    public UserDto signIn(){
-//        UserEntity userEntity
-//    }
+
+    @Transactional
+    public Boolean signIn(User user){
+        User signInUser = userRepository.findByIdAndPassword(user.getId(), user.getPassword());
+        return signInUser != null;
+    }
 
 //    @Transactional
 //    public Long signUp(UserDto userDto){

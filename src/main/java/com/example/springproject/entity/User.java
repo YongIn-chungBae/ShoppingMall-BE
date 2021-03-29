@@ -1,23 +1,23 @@
 package com.example.springproject.entity;
 
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor()
 @AllArgsConstructor
-@Getter
+@Getter @Setter
 @Entity
 @Table(name = "user")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_idx")
     private Long idx;
 
@@ -41,4 +41,18 @@ public class User {
 
     @OneToMany(mappedBy = "userIdx")
     List<ProductEvaluation> productEvaluations = new ArrayList<>();
+
+//    @Builder
+//    public User(Long idx,String id, String password, String name, String email){
+//        Assert.hasText(id, "id must not be empty");
+//        Assert.hasText(password, "password must not be empty");
+//        Assert.hasText(name, "name must not be empty");
+//        Assert.hasText(email, "email must not be empty");
+//
+//        this.idx = idx;
+//        this.id = id;
+//        this.password = password;
+//        this.name = name;
+//        this.email = email;
+//    }
 }
