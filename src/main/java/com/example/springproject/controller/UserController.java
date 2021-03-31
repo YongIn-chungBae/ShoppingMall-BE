@@ -1,7 +1,7 @@
 package com.example.springproject.controller;
 
 
-import com.example.springproject.entity.User;
+import com.example.springproject.dto.UserDTO;
 import com.example.springproject.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,18 +16,18 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/sign-up")
-    public void signUp(@RequestBody User user) throws Exception {
+    public void signUp(@RequestBody UserDTO userDTO) throws Exception {
         try{
-            userService.signUp(user);
+            userService.signUp(userDTO);
         }catch (Exception e){
             System.out.println("error test"+e);
         }
     }
 
     @PostMapping("/sign-in")
-    public boolean signIn(@RequestBody User user) throws Exception{
+    public boolean signIn(@RequestBody UserDTO userDTO) throws Exception{
         try{
-            return userService.signIn(user);
+            return userService.signIn(userDTO);
         }catch (Exception e){
             System.out.println(e);
             return false;

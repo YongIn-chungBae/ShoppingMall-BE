@@ -1,5 +1,6 @@
 package com.example.springproject.service;
 
+import com.example.springproject.dto.UserDTO;
 import com.example.springproject.entity.User;
 import com.example.springproject.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -19,13 +20,20 @@ public class UserService {
 
 
     @Transactional
-    public Long signUp(User user) {
+    public Long signUp(UserDTO userDTO) {
+        User user = User.builder()
+                .email(userDTO.getEmail())
+                .password(userDTO.getPassword())
+                .name(userDTO.getName())
+                .id(userDTO.getId())
+                .build();
+
         return userRepository.save(user).getIdx();
     }
 
 
     @Transactional
-    public Boolean signIn(User user){
+    public Boolean signIn(UserDTO user){
         User signInUser = userRepository.findByIdAndPassword(user.getId(), user.getPassword());
         return signInUser != null;
     }
