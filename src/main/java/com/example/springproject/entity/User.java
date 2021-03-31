@@ -1,9 +1,6 @@
 package com.example.springproject.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -42,17 +39,12 @@ public class User {
     @OneToMany(mappedBy = "userIdx")
     List<ProductEvaluation> productEvaluations = new ArrayList<>();
 
-//    @Builder
-//    public User(Long idx,String id, String password, String name, String email){
-//        Assert.hasText(id, "id must not be empty");
-//        Assert.hasText(password, "password must not be empty");
-//        Assert.hasText(name, "name must not be empty");
-//        Assert.hasText(email, "email must not be empty");
-//
-//        this.idx = idx;
-//        this.id = id;
-//        this.password = password;
-//        this.name = name;
-//        this.email = email;
-//    }
+    @Builder
+    public User(Long idx,String id, String password, String name, String email){
+        this.idx = idx;
+        this.id = id;
+        this.password = password;
+        this.name = name;
+        this.email = email;
+    }
 }
