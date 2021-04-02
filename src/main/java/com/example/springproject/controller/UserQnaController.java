@@ -23,4 +23,9 @@ public class UserQnaController {
         return new ResponseEntity(new Message(userQnaService.saveQna(userQnaDTO), StatusEnum.OK), HttpStatus.OK);
     }
 
+    @GetMapping("/qna/findAll")
+    public ResponseEntity findQnaAll(){
+        return new ResponseEntity(new Message(userQnaService.findAllQna(), StatusEnum.OK), HttpStatus.OK);
+    }
+
 }

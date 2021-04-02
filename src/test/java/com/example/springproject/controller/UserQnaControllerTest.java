@@ -22,4 +22,9 @@ class UserQnaControllerTest {
 
         System.out.println(userQnaController.saveQna(userQnaDTO));
     }
+
+    @Test
+    void findQnaAll(){
+        System.out.println(userQnaController.findQnaAll());
+    }
 }
