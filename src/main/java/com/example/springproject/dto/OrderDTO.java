@@ -9,7 +9,7 @@ import java.time.LocalDate;
 public class OrderDTO {
     private Long idx;
     private LocalDate createdTime;
-    private int state;
+    private String state;
     private Long productIdx;
     private Long userIdx;
 }
