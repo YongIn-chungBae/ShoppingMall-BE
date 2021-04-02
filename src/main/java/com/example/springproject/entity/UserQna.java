@@ -1,9 +1,6 @@
 package com.example.springproject.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -11,7 +8,6 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "user_qna")
 public class UserQna {
     @Id
@@ -27,4 +23,12 @@ public class UserQna {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_idx")
     private User userIdx;
+
+    @Builder
+    public UserQna(Long Idx, String title, String content, User user){
+        this.idx = Idx;
+        this.title = title;
+        this.content = content;
+        this.userIdx = user;
+    }
 }
