@@ -11,6 +11,7 @@ public class ProductDTO {
     private int count;
     private int price;
     private String image;
+    private String category;
 
     public static ProductDTO toDTO(Product product){
         ProductDTO productDTO = new ProductDTO();
@@ -19,6 +20,7 @@ public class ProductDTO {
         productDTO.setImage(product.getImage());
         productDTO.setName(product.getName());
         productDTO.setPrice(product.getPrice());
+        productDTO.setCategory(product.getCategory());
 
         return productDTO;
     }

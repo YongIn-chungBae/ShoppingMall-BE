@@ -21,4 +21,11 @@ public class ProductController {
     public ResponseEntity findAllProduct() {
         return new ResponseEntity(new Message(productService.findAllProduct(), StatusEnum.OK) , HttpStatus.OK);
     }
+
+    @GetMapping("/product/category/main")
+    public ResponseEntity findProductMain(){
+        return new ResponseEntity(new Message(productService.findProductMain(), StatusEnum.OK), HttpStatus.OK);
+    }
+
+
 }
