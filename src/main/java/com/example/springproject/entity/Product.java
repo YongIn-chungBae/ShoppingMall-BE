@@ -31,6 +31,9 @@ public class Product {
     @Column(name = "product_image")
     private String image;
 
+    @Column(name = "product_category")
+    private String category;
+
     @OneToMany(mappedBy = "productIdx")
     private List<Order> orders = new ArrayList<>();
 

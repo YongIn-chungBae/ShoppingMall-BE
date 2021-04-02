@@ -1,5 +1,6 @@
 package com.example.springproject.controller;
 
+import com.example.springproject.dto.UserDTO;
 import com.example.springproject.entity.User;
 import com.example.springproject.repository.UserRepository;
 import org.junit.jupiter.api.Test;
@@ -17,7 +18,7 @@ class UserControllerTest {
 
     @Test
     void signUp() {
-        User user2 = new User();
+        UserDTO user2 = new UserDTO();
         user2.setId("test");
         user2.setName("test");
         user2.setPassword("test");
@@ -35,7 +36,7 @@ class UserControllerTest {
 
         User user = userRepository.findByIdx(1L);
         System.out.println(user.getName());
-        System.out.println(userController.signIn(user));
+//        System.out.println(userController.signIn(user));
     }
 
 }
