@@ -1,16 +1,12 @@
 package com.example.springproject.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Getter @Setter
-@AllArgsConstructor @NoArgsConstructor
+@Getter @Setter @NoArgsConstructor
 @Table(name = "order_")
 public class Order {
 
@@ -22,7 +18,7 @@ public class Order {
     private LocalDate createdTime;
 
     @Column(name = "order_state")
-    private int state;
+    private String state;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_idx")
@@ -31,4 +27,13 @@ public class Order {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_idx")
     private User userIdx;
+
+    @Builder
+    public Order(Long idx, LocalDate createdTime, String state, Product productIdx, User userIdx){
+        this.idx = idx;
+        this.createdTime = createdTime;
+        this.state = state;
+        this.productIdx = productIdx;
+        this.userIdx = userIdx;
+    }
 }
