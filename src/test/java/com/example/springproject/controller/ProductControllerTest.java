@@ -21,4 +21,9 @@ class ProductControllerTest {
         assertThat(productController.findProductMain().getStatusCodeValue()).isEqualTo(200);
     }
 
+    @Test
+    void findProductCategory(){
+        System.out.println(productController.findProductCategory("팬텀"));
+
+    }
 }

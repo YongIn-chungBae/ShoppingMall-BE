@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -25,6 +26,11 @@ public class ProductController {
     @GetMapping("/product/category/main")
     public ResponseEntity findProductMain(){
         return new ResponseEntity(new Message(productService.findProductMain(), StatusEnum.OK), HttpStatus.OK);
+    }
+
+    @GetMapping("/product/category")
+    public ResponseEntity findProductCategory(@RequestParam("category") String category){
+        return new ResponseEntity(new Message(productService.findProductCategory(category), StatusEnum.OK), HttpStatus.OK);
     }
 
 

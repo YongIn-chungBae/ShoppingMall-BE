@@ -43,4 +43,9 @@ public class ProductService {
 
         return products.stream().map(ProductDTO::toDTO).collect(Collectors.toList());
     }
+
+    public List<ProductDTO> findProductCategory(String category) {
+        List<Product> products = productRepository.findByCategory(category);
+        return products.stream().map(ProductDTO::toDTO).collect(Collectors.toList());
+    }
 }
