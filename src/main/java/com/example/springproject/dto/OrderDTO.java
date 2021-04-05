@@ -10,6 +10,7 @@ public class OrderDTO {
     private Long idx;
     private LocalDate createdTime;
     private String state;
+    private int count;
     private Long productIdx;
     private Long userIdx;
 }

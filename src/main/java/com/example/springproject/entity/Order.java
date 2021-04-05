@@ -20,6 +20,9 @@ public class Order {
     @Column(name = "order_state")
     private String state;
 
+    @Column(name = "order_count")
+    private int count;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_idx")
     private Product productIdx;
@@ -29,11 +32,12 @@ public class Order {
     private User userIdx;
 
     @Builder
-    public Order(Long idx, LocalDate createdTime, String state, Product productIdx, User userIdx){
+    public Order(Long idx, LocalDate createdTime, String state, int count, Product productIdx, User userIdx){
         this.idx = idx;
         this.createdTime = createdTime;
         this.state = state;
         this.productIdx = productIdx;
         this.userIdx = userIdx;
+        this.count = count;
     }
 }
