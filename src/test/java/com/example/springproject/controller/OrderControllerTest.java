@@ -20,6 +20,7 @@ class OrderControllerTest {
         orderDTO.setProductIdx(1L);
         orderDTO.setUserIdx(1L);
         orderDTO.setState("배송중");
+        orderDTO.setCount(3);
 
         System.out.println(orderController.productOrder(orderDTO));
     }
