@@ -34,6 +34,10 @@ public class Product {
     @Column(name = "product_category")
     private String category;
 
+    @Column(name = "product_bp_category")
+    private String bpCategory;
+
+
     @OneToMany(mappedBy = "productIdx")
     private List<Order> orders = new ArrayList<>();
 
