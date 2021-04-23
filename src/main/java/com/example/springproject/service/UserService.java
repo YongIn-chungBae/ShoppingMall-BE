@@ -38,9 +38,11 @@ public class UserService {
         return signInUser != null;
     }
 
-//    @Transactional
-//    public Long signUp(UserDto userDto){
-//        return userRepository.save(userDto.toEntity()).getIdx();
-//    }
+    @Transactional
+    public UserDTO getUserInfo(Long userIdx){
+        User getInfo = userRepository.findByIdx(userIdx);
+        UserDTO userDTO = UserDTO.toDTO(getInfo);
+        return userDTO;
+    }
 
 }
