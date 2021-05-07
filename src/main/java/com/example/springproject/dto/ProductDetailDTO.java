@@ -19,6 +19,7 @@ public class ProductDetailDTO {
     private String content;
     private Long productIdx;
     private String productName;
+    private String productImage;
 
     public static ProductDetailDTO toDTO(ProductDetail productDetail, Product product){
         ProductDetailDTO productDetailDTO = new ProductDetailDTO();
@@ -34,6 +35,7 @@ public class ProductDetailDTO {
         productDetailDTO.setContent(productDetail.getContent());
         productDetailDTO.setProductIdx(product.getIdx());
         productDetailDTO.setProductName(product.getName());
+        productDetail.setImage(productDetail.getImage());
 
         return productDetailDTO;
     }
