@@ -46,6 +46,9 @@ public class ProductDetail {
     @Column(name = "product_detail_explanation_content")
     private String content;
 
+    @Column(name = "product_detail_image")
+    private String image;
+
     @JoinColumn(name = "product_idx")
     private Long productIdx;
 
