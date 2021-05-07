@@ -26,6 +26,7 @@ public class ProductDetailDTO {
         productDetailDTO.setIdx(productDetail.getIdx());
         productDetailDTO.setStyle(productDetail.getStyle());
         productDetailDTO.setColor(productDetail.getColor());
+        productDetailDTO.setProductImage(productDetail.getImage());
         productDetailDTO.setMaterial(productDetail.getMaterial());
         productDetailDTO.setSize(productDetail.getSize());
         productDetailDTO.setCountry(productDetail.getCountry());
@@ -35,7 +36,7 @@ public class ProductDetailDTO {
         productDetailDTO.setContent(productDetail.getContent());
         productDetailDTO.setProductIdx(product.getIdx());
         productDetailDTO.setProductName(product.getName());
-        productDetail.setImage(productDetail.getImage());
+
 
         return productDetailDTO;
     }
