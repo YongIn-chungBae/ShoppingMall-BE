@@ -28,17 +28,12 @@ public class UserController {
     @ApiOperation(value = "회원가입")
     @PostMapping("/sign-up")
     public ResponseEntity signUp(@RequestBody UserDTO userDTO) throws Exception {
-            return new ResponseEntity(new Message(userService.signUp(userDTO), StatusEnum.OK) , HttpStatus.OK);
+        return new ResponseEntity(new Message(userService.signUp(userDTO), StatusEnum.OK), HttpStatus.OK);
     }
 
     @ApiOperation(value = "로그인")
     @PostMapping("/sign-in")
-    public boolean signIn(@RequestBody UserDTO userDTO) throws Exception{
-        try{
-            return userService.signIn(userDTO);
-        }catch (Exception e){
-            System.out.println(e);
-            return false;
-        }
+    public ResponseEntity signIn(@RequestBody UserDTO userDTO) throws Exception {
+        return new ResponseEntity(new Message(userService.signIn(userDTO), StatusEnum.OK), HttpStatus.OK);
     }
 }

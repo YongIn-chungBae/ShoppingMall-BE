@@ -33,9 +33,9 @@ public class UserService {
 
 
     @Transactional
-    public Boolean signIn(UserDTO user){
-        User signInUser = userRepository.findByIdAndPassword(user.getId(), user.getPassword());
-        return signInUser != null;
+    public Long signIn(UserDTO user){
+        Long signInUser = userRepository.findByIdAndPassword(user.getId(), user.getPassword()).getIdx();
+        return signInUser;
     }
 
     @Transactional
