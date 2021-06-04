@@ -9,14 +9,16 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Getter @Setter
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "shopping_cart")
 public class ShoppingCart {
 
     @Id
-    @Column(name = "shopping_cart_idx") @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "shopping_cart_idx")
     private Long idx;
 
     @Column(name = "shopping_cart_time")
