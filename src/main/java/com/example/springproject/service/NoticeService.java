@@ -3,7 +3,9 @@ package com.example.springproject.service;
 import com.example.springproject.dto.NoticeDTO;
 import com.example.springproject.dto.UserDTO;
 import com.example.springproject.entity.Notice;
+import com.example.springproject.entity.User;
 import com.example.springproject.repository.NoticeRepository;
+import com.example.springproject.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,9 @@ public class NoticeService {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    UserRepository userRepository;
 
     public ArrayList<NoticeDTO> findNoticeList() {
         List<Notice> notices = noticeRepository.findAll();
@@ -35,5 +40,17 @@ public class NoticeService {
             noticeDTOs.add(noticeDTO);
         }
         return noticeDTOs;
+    }
+
+    public Long saveNotice(NoticeDTO noticeDTO) {
+        User user = userRepository.findByIdx(noticeDTO.getUserIdx());
+
+        Notice notice = Notice.builder()
+                .content(noticeDTO.getContent())
+                .title(noticeDTO.getTitle())
+                .userIdx(user)
+                .build();
+
+        return noticeRepository.save(notice).getIdx();
     }
 }

@@ -1,5 +1,6 @@
 package com.example.springproject.controller;
 
+import com.example.springproject.dto.NoticeDTO;
 import com.example.springproject.service.NoticeService;
 import com.example.springproject.util.message.Message;
 import com.example.springproject.util.message.StatusEnum;
@@ -9,9 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
@@ -25,6 +24,12 @@ public class NoticeController {
     @ApiOperation(value = "공지사항 가져오기")
     public ResponseEntity findNoticeList(){
         return new ResponseEntity(new Message(noticeService.findNoticeList(), StatusEnum.OK), HttpStatus.OK);
+    }
+
+    @PostMapping("/notice/save")
+    @ApiOperation(value = "공지사항 등록하기")
+    public ResponseEntity saveNotice(@RequestBody NoticeDTO noticeDTO){
+        return new ResponseEntity(new Message(noticeService.saveNotice(noticeDTO), StatusEnum.OK), HttpStatus.OK);
     }
 
 }
