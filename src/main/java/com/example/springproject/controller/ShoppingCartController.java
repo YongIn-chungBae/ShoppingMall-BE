@@ -1,5 +1,6 @@
 package com.example.springproject.controller;
 
+import com.example.springproject.entity.User;
 import com.example.springproject.repository.ShoppingCartRepository;
 import com.example.springproject.service.ShoppingCartService;
 import com.example.springproject.util.message.Message;
@@ -28,9 +29,8 @@ public class ShoppingCartController {
 
     @ApiOperation(value = "장바구니 리스트 가져오기")
     @GetMapping("/shoppingCartList")
-    public ResponseEntity findAllProduct(@RequestParam("userIdx") Long userIdx) {
-        System.out.println(userIdx);
-        return new ResponseEntity(new Message(shoppingCartService.findShoppingCartList(userIdx), StatusEnum.OK) , HttpStatus.OK);
+    public ResponseEntity findAllProduct(@RequestParam("userIdx") User user) {
+        return new ResponseEntity(new Message(shoppingCartService.findShoppingCartList(user), StatusEnum.OK) , HttpStatus.OK);
     }
 
 }

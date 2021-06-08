@@ -2,6 +2,7 @@ package com.example.springproject.service;
 
 import com.example.springproject.dto.ShoppingCartDTO;
 import com.example.springproject.entity.ShoppingCart;
+import com.example.springproject.entity.User;
 import com.example.springproject.repository.ShoppingCartRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +19,9 @@ public class ShoppingCartService {
     ShoppingCartRepository shoppingCartRepository;
 
     @Transactional
-    public List<ShoppingCartDTO> findShoppingCartList(Long userIdx){
-        System.out.println("이건 되려");
-        List<ShoppingCart> shoppingCartList = shoppingCartRepository.findByUserIdx(userIdx);
-        System.out.println("이건 되려나나나");
+    public List<ShoppingCartDTO> findShoppingCartList(User user){
+        List<ShoppingCart> shoppingCartList = shoppingCartRepository.findByUserIdx(user);
         for (ShoppingCart shoppingCart : shoppingCartList){
-            System.out.println("아주잘나옵니다"+shoppingCart.getProductIdx());
             System.out.println(shoppingCart.getUserIdx());
             System.out.println(shoppingCart.getCreatedTime());
         }
