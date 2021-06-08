@@ -32,4 +32,10 @@ public class NoticeController {
         return new ResponseEntity(new Message(noticeService.saveNotice(noticeDTO), StatusEnum.OK), HttpStatus.OK);
     }
 
+    @GetMapping("/notice/detail")
+    @ApiOperation(value = "공지사항 상세보기")
+    public ResponseEntity saveNotice(@RequestParam("notice_idx") Long noticeIdx){
+        return new ResponseEntity(new Message(noticeService.detailNotice(noticeIdx), StatusEnum.OK), HttpStatus.OK);
+    }
+
 }
