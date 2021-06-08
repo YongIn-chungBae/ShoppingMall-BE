@@ -9,6 +9,7 @@ import com.example.springproject.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,8 +50,16 @@ public class NoticeService {
                 .content(noticeDTO.getContent())
                 .title(noticeDTO.getTitle())
                 .userIdx(user)
+                .createdTime(LocalDate.now())
                 .build();
 
         return noticeRepository.save(notice).getIdx();
+    }
+
+    public NoticeDTO detailNotice(Long noticeIdx) {
+        Notice notice = noticeRepository.findByIdx(noticeIdx);
+        User user = userRepository.findByIdx(1L);
+
+        return NoticeDTO.toDTO(notice, user);
     }
 }
