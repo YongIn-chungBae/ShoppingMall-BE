@@ -1,6 +1,7 @@
 package com.example.springproject.service;
 
 import com.example.springproject.dto.ShoppingCartDTO;
+import com.example.springproject.entity.Product;
 import com.example.springproject.entity.ShoppingCart;
 import com.example.springproject.entity.User;
 import com.example.springproject.repository.ShoppingCartRepository;
@@ -26,5 +27,13 @@ public class ShoppingCartService {
             System.out.println(shoppingCart.getCreatedTime());
         }
         return shoppingCartList.stream().map(ShoppingCartDTO::toDTO).collect(Collectors.toList());
+    }
+
+    public Long saveShoppingCart(User user, Product product) {
+        ShoppingCart shoppingCart = ShoppingCart.builder()
+                .product(product)
+                .user(user)
+                .build();
+        return shoppingCartRepository.save(shoppingCart).getIdx();
     }
 }
