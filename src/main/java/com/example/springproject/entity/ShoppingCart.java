@@ -1,9 +1,6 @@
 package com.example.springproject.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -31,4 +28,11 @@ public class ShoppingCart {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_idx")
     private User userIdx;
+
+    @Builder
+    public ShoppingCart(User user, Product product){
+        this.productIdx = product;
+        this.userIdx = user;
+        this.createdTime = LocalDate.now();
+    }
 }

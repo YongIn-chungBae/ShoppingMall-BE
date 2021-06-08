@@ -1,5 +1,6 @@
 package com.example.springproject.controller;
 
+import com.example.springproject.entity.Product;
 import com.example.springproject.entity.User;
 import com.example.springproject.repository.ShoppingCartRepository;
 import com.example.springproject.service.ShoppingCartService;
@@ -11,10 +12,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
@@ -29,8 +27,14 @@ public class ShoppingCartController {
 
     @ApiOperation(value = "장바구니 리스트 가져오기")
     @GetMapping("/shoppingCartList")
-    public ResponseEntity findAllProduct(@RequestParam("userIdx") User user) {
+    public ResponseEntity findAllShoppingCart(@RequestParam("userIdx") User user) {
         return new ResponseEntity(new Message(shoppingCartService.findShoppingCartList(user), StatusEnum.OK) , HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "장바구니 담기")
+    @PostMapping("/shoppingCart/save")
+    public ResponseEntity saveShoppingCart(@RequestParam("userIdx") User user, @RequestParam("productIdx") Product product) {
+        return new ResponseEntity(new Message(shoppingCartService.saveShoppingCart(user, product), StatusEnum.OK) , HttpStatus.OK);
     }
 
 }
