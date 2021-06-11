@@ -37,4 +37,11 @@ public class UserQnaController {
     public ResponseEntity replyQna(@RequestParam String replyContent, @RequestParam Long qnaIdx){
         return new ResponseEntity(new Message(userQnaService.replyQna(replyContent, qnaIdx), StatusEnum.OK), HttpStatus.OK);
     }
+
+    @ApiOperation(value = "Q&A 상세보기")
+    @GetMapping("/qna/detail")
+    public ResponseEntity qnaDetail(@RequestParam Long qnaIdx){
+        return new ResponseEntity(new Message(userQnaService.qnaDetail(qnaIdx), StatusEnum.OK), HttpStatus.OK);
+    }
+
 }

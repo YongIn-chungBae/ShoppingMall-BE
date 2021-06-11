@@ -41,4 +41,8 @@ public class UserQnaService {
         System.out.println(replyContent+qnaIdx);
         return userQnaRepository.updateReply(replyContent, qnaIdx);
     }
+
+    public UserQnaDTO qnaDetail(Long qnaIdx) {
+        return UserQnaDTO.toDTO(userQnaRepository.findByIdx(qnaIdx));
+    }
 }
