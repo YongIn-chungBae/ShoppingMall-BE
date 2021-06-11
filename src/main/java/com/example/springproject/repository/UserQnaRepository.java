@@ -15,4 +15,6 @@ public interface UserQnaRepository extends JpaRepository<UserQna, Long> {
     @Modifying
     @Query("UPDATE UserQna qna SET qna.reply = :reply WHERE qna.idx = :idx")
     int updateReply(@RequestParam("reply") String reply,@RequestParam("idx") Long idx);
+
+    UserQna findByIdx(Long qnaIdx);
 }
