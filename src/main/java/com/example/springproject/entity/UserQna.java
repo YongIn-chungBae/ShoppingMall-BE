@@ -20,15 +20,19 @@ public class UserQna {
     @Column(name = "user_qna_content")
     private String content;
 
+    @Column(name = "user_qna_reply")
+    private String reply;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_idx")
     private User userIdx;
 
     @Builder
-    public UserQna(Long Idx, String title, String content, User user){
+    public UserQna(Long Idx, String title, String content, User user, String reply){
         this.idx = Idx;
         this.title = title;
         this.content = content;
         this.userIdx = user;
+        this.reply = reply;
     }
 }

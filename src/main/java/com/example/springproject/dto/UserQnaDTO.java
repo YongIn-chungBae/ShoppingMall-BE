@@ -10,6 +10,7 @@ public class UserQnaDTO {
     private String title;
     private String content;
     private Long userIdx;
+    private String reply;
 
     public static UserQnaDTO toDTO(UserQna userQna){
         UserQnaDTO userQnaDTO = new UserQnaDTO();
@@ -17,7 +18,7 @@ public class UserQnaDTO {
         userQnaDTO.setTitle(userQna.getTitle());
         userQnaDTO.setContent(userQna.getContent());
         userQnaDTO.setUserIdx(userQna.getUserIdx().getIdx());
-
+        userQnaDTO.setReply(userQna.getReply());
         return userQnaDTO;
     }
 }
