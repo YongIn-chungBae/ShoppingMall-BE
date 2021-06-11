@@ -36,4 +36,9 @@ public class UserQnaService {
     public List<UserQnaDTO> findAllQna() {
         return userQnaRepository.findAll().stream().map(UserQnaDTO::toDTO).collect(Collectors.toList());
     }
+
+    public int replyQna(String replyContent, Long qnaIdx) {
+        System.out.println(replyContent+qnaIdx);
+        return userQnaRepository.updateReply(replyContent, qnaIdx);
+    }
 }

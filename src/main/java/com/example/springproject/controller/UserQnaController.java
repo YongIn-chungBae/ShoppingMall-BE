@@ -32,5 +32,9 @@ public class UserQnaController {
     public ResponseEntity findQnaAll(){
         return new ResponseEntity(new Message(userQnaService.findAllQna(), StatusEnum.OK), HttpStatus.OK);
     }
-
+    @ApiOperation(value = "Q&A 댓글 달기")
+    @PostMapping("/qna/reply")
+    public ResponseEntity replyQna(@RequestParam String replyContent, @RequestParam Long qnaIdx){
+        return new ResponseEntity(new Message(userQnaService.replyQna(replyContent, qnaIdx), StatusEnum.OK), HttpStatus.OK);
+    }
 }
