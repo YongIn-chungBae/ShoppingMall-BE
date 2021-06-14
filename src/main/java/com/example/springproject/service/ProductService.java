@@ -59,4 +59,9 @@ public class ProductService {
         List<Product> products = productRepository.findAll(Sort.by(Sort.Direction.DESC, "price"));
         return products.stream().map(ProductDTO::toDTO).collect(Collectors.toList());
     }
+
+    public List<ProductDTO> findSearchProduct(String name) {
+        List<Product> products = productRepository.findByNameContaining(name);
+        return products.stream().map(ProductDTO::toDTO).collect(Collectors.toList());
+    }
 }

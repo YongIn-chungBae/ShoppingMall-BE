@@ -53,4 +53,10 @@ public class ProductController {
         return new ResponseEntity(new Message(productService.findUpperProduct(), StatusEnum.OK) , HttpStatus.OK);
     }
 
+
+    @ApiOperation(value = "제품 검색 리스트 가져오기")
+    @GetMapping("/product/search")
+    public ResponseEntity findSearchProduct(@RequestParam("name") String name) {
+        return new ResponseEntity(new Message(productService.findSearchProduct(name), StatusEnum.OK) , HttpStatus.OK);
+    }
 }
