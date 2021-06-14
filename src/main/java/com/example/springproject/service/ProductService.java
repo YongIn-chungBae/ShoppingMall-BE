@@ -5,6 +5,7 @@ import com.example.springproject.entity.Product;
 import com.example.springproject.repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,6 +47,16 @@ public class ProductService {
 
     public List<ProductDTO> findProductCategory(String category) {
         List<Product> products = productRepository.findByCategory(category);
+        return products.stream().map(ProductDTO::toDTO).collect(Collectors.toList());
+    }
+
+    public List<ProductDTO> findLowerProduct() {
+        List<Product> products = productRepository.findAll(Sort.by(Sort.Direction.ASC, "price"));
+        return products.stream().map(ProductDTO::toDTO).collect(Collectors.toList());
+    }
+
+    public List<ProductDTO> findUpperProduct() {
+        List<Product> products = productRepository.findAll(Sort.by(Sort.Direction.DESC, "price"));
         return products.stream().map(ProductDTO::toDTO).collect(Collectors.toList());
     }
 }
