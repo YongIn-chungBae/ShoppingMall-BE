@@ -10,15 +10,15 @@ import java.time.LocalDate;
 public class ShoppingCartDTO {
     private Long idx;
     private LocalDate createdTime;
-    private Long productIdx;
+    private ProductDTO productDTO;
     private Long userIdx;
 
 
-    public static ShoppingCartDTO toDTO(ShoppingCart shoppingCart){
+    public static ShoppingCartDTO toDTO(ShoppingCart shoppingCart, ProductDTO productDTO){
         ShoppingCartDTO shoppingCartDTO = new ShoppingCartDTO();
         shoppingCartDTO.setCreatedTime(shoppingCart.getCreatedTime());
         shoppingCartDTO.setIdx(shoppingCart.getIdx());
-        shoppingCartDTO.setProductIdx(shoppingCart.getProductIdx().getIdx());
+        shoppingCartDTO.setProductDTO(productDTO);
         shoppingCartDTO.setUserIdx(shoppingCart.getUserIdx().getIdx());
 
 

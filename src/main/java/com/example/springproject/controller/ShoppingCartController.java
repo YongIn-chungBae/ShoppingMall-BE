@@ -37,4 +37,10 @@ public class ShoppingCartController {
         return new ResponseEntity(new Message(shoppingCartService.saveShoppingCart(user, product), StatusEnum.OK) , HttpStatus.OK);
     }
 
+    @ApiOperation(value = "장바구니 제품 삭제")
+    @PostMapping("/shoppingCart/delete")
+    public ResponseEntity deleteShoppingCart(@RequestParam("shopping_cart_idx") Long shoppingCartIdx) {
+        return new ResponseEntity(new Message(shoppingCartService.deleteShoppingCart(shoppingCartIdx), StatusEnum.OK) , HttpStatus.OK);
+    }
+
 }
