@@ -41,5 +41,16 @@ public class ProductController {
         return new ResponseEntity(new Message(productService.findProductCategory(category), StatusEnum.OK), HttpStatus.OK);
     }
 
+    @ApiOperation(value = "제품 낮은 가격 순으로 가져오기")
+    @GetMapping("/productList/lower")
+    public ResponseEntity findLowerProduct() {
+        return new ResponseEntity(new Message(productService.findLowerProduct(), StatusEnum.OK) , HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "제품 높은 가격 순으로 가져오기")
+    @GetMapping("/productList/upper")
+    public ResponseEntity findUpperProduct() {
+        return new ResponseEntity(new Message(productService.findUpperProduct(), StatusEnum.OK) , HttpStatus.OK);
+    }
 
 }
