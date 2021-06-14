@@ -27,6 +27,7 @@ public class OrderService {
         Product product = productRepository.findByIdx(orderDTO.getProductIdx());
         User user = userRepository.findByIdx(orderDTO.getUserIdx());
 
+        productRepository.updateCount(orderDTO.getCount(), orderDTO.getProductIdx());
         Order order = Order.builder()
                 .createdTime(LocalDate.now())
                 .state("배송중")
