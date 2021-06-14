@@ -44,4 +44,14 @@ public class ShoppingCartService {
                 .build();
         return shoppingCartRepository.save(shoppingCart).getIdx();
     }
+
+    public Boolean deleteShoppingCart(Long shoppingCartIdx) {
+        try{
+            shoppingCartRepository.deleteById(shoppingCartIdx);
+            return true;
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
 }
