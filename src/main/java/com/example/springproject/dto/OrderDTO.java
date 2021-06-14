@@ -13,4 +13,16 @@ public class OrderDTO {
     private int count;
     private Long productIdx;
     private Long userIdx;
+
+    @Override
+    public String toString() {
+        return "OrderDTO{" +
+                "idx=" + idx +
+                ", createdTime=" + createdTime +
+                ", state='" + state + '\'' +
+                ", count=" + count +
+                ", productIdx=" + productIdx +
+                ", userIdx=" + userIdx +
+                '}';
+    }
 }

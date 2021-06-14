@@ -10,6 +10,8 @@ import com.example.springproject.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+
 @Service
 public class OrderService {
 
@@ -26,12 +28,13 @@ public class OrderService {
         User user = userRepository.findByIdx(orderDTO.getUserIdx());
 
         Order order = Order.builder()
-                .createdTime(orderDTO.getCreatedTime())
-                .state(orderDTO.getState())
+                .createdTime(LocalDate.now())
+                .state("배송중")
                 .productIdx(product)
                 .userIdx(user)
                 .build();
 
         return orderRepository.save(order).getIdx();
     }
+
 }
