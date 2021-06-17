@@ -1,8 +1,12 @@
 package com.example.springproject.entity;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -23,6 +27,9 @@ public class UserQna {
     @Column(name = "user_qna_reply")
     private String reply;
 
+    @Column(name = "user_qna_date")
+    private LocalDate createdTime;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_idx")
     private User userIdx;
@@ -34,5 +41,6 @@ public class UserQna {
         this.content = content;
         this.userIdx = user;
         this.reply = reply;
+        this.createdTime = LocalDate.now();
     }
 }

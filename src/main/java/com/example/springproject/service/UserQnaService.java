@@ -7,6 +7,7 @@ import com.example.springproject.repository.UserQnaRepository;
 import com.example.springproject.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,6 +34,7 @@ public class UserQnaService {
         return userQnaRepository.save(userQna).getIdx();
     }
 
+    @Transactional
     public List<UserQnaDTO> findAllQna() {
         return userQnaRepository.findAll().stream().map(UserQnaDTO::toDTO).collect(Collectors.toList());
     }
