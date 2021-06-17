@@ -29,13 +29,7 @@ public class ProductController {
         return new ResponseEntity(new Message(productService.findAllProduct(), StatusEnum.OK) , HttpStatus.OK);
     }
 
-    @ApiOperation(value = "카테고리 별 제품 가져오기")
-    @GetMapping("/product/category/main")
-    public ResponseEntity findProductMain(){
-        return new ResponseEntity(new Message(productService.findProductMain(), StatusEnum.OK), HttpStatus.OK);
-    }
-
-    @ApiOperation(value = "카테고리 별 3개씩 가져오기")
+    @ApiOperation(value = "카테고리 별 리스트 가져오기")
     @GetMapping("/product/category")
     public ResponseEntity findProductCategory(@RequestParam("category") String category){
         return new ResponseEntity(new Message(productService.findProductCategory(category), StatusEnum.OK), HttpStatus.OK);
