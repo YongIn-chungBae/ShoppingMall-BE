@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,9 +26,12 @@ public class OrderController {
     @ApiOperation(value = "주문하기")
     @PostMapping("order/buy")
     public ResponseEntity productOrder(@RequestBody OrderDTO orderDTO){
-        System.out.println("테스트");
-        System.out.println(orderDTO.getProductIdx());
-        System.out.println(orderDTO.toString());
         return new ResponseEntity(new Message(orderService.productOrder(orderDTO), StatusEnum.OK), HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "주문내역 리스트 가져오기")
+    @GetMapping("order/List")
+    public ResponseEntity findOrderList(@RequestBody OrderDTO orderDTO){
+        return new ResponseEntity(new Message(orderService.findOrderList(orderDTO), StatusEnum.OK), HttpStatus.OK);
     }
 }
