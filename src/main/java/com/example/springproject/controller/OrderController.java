@@ -10,14 +10,12 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
 @Api(tags = "주문", description = "주문하기")
+@CrossOrigin(origins = "*")
 public class OrderController {
 
     @Autowired
@@ -31,7 +29,7 @@ public class OrderController {
 
     @ApiOperation(value = "주문내역 리스트 가져오기")
     @GetMapping("order/List")
-    public ResponseEntity findOrderList(@RequestBody OrderDTO orderDTO){
-        return new ResponseEntity(new Message(orderService.findOrderList(orderDTO), StatusEnum.OK), HttpStatus.OK);
+    public ResponseEntity findOrderList(@RequestParam("userIdx") Long userIdx){
+        return new ResponseEntity(new Message(orderService.findOrderList(userIdx), StatusEnum.OK), HttpStatus.OK);
     }
 }

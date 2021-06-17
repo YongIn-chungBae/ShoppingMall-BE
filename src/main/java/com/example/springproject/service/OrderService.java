@@ -43,8 +43,8 @@ public class OrderService {
     }
 
     @Transactional
-    public List<OrderListDTO> findOrderList(OrderDTO orderDTO) {
-        User user = userRepository.findByIdx(orderDTO.getUserIdx());
+    public List<OrderListDTO> findOrderList(Long userIdx) {
+        User user = userRepository.findByIdx(userIdx);
         List<Order> orders = orderRepository.findByUserIdx(user);
         return orders.stream().map(OrderListDTO::toDTO).collect(Collectors.toList());
     }
