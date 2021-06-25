@@ -39,11 +39,13 @@ public class UserQnaService {
         return userQnaRepository.findAll().stream().map(UserQnaDTO::toDTO).collect(Collectors.toList());
     }
 
+    @Transactional
     public int replyQna(String replyContent, Long qnaIdx) {
         System.out.println(replyContent+qnaIdx);
         return userQnaRepository.updateReply(replyContent, qnaIdx);
     }
 
+    @Transactional
     public UserQnaDTO qnaDetail(Long qnaIdx) {
         return UserQnaDTO.toDTO(userQnaRepository.findByIdx(qnaIdx));
     }
