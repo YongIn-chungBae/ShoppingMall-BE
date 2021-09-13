@@ -23,12 +23,5 @@
 <br>
 <br>
 
-## 🎈 Project Challenge
-<br>
-
-- [ ] Spring boot JPA 사용하기.
-- [ ] 개발 일지 작성하기.
-- [ ] 사용한 기술 스택 원리 파악하기.
-- [ ] gitflow 적용해보기.
 
 
